@@ -41,9 +41,9 @@ sudo mysql -e "FLUSH PRIVILEGES"
 # 4. Carregar timezones no MySQL
 mysql_tzinfo_to_sql /usr/share/zoneinfo | sudo mysql -u root mysql
 
-# 5. Ajusta php.ini (PHP 8.2 no Debian 13)
-sudo sed -i 's/^;*session.cookie_httponly =.*/session.cookie_httponly = On/' /etc/php/8.2/fpm/php.ini
-sudo sed -i 's/^;*date.timezone =.*/date.timezone = America\/Sao_Paulo/' /etc/php/8.2/fpm/php.ini
+# 5. Ajusta php.ini (PHP 8.4 no Debian 13)
+sudo sed -i 's/^;*session.cookie_httponly =.*/session.cookie_httponly = On/' /etc/php/8.4/fpm/php.ini
+sudo sed -i 's/^;*date.timezone =.*/date.timezone = America\/Sao_Paulo/' /etc/php/8.4/fpm/php.ini
 
 # 6. Configuração básica do Nginx para o GLPI
 cat << "EOF" > /tmp/nginx.conf
@@ -74,7 +74,7 @@ http {
         }
         location ~ ^/index\.php$ {
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+            fastcgi_pass unix:/run/php/php8.4-fpm.sock;
             fastcgi_index index.php;
             include /etc/nginx/fastcgi.conf;
         }
@@ -84,10 +84,10 @@ EOF
 sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
 
 # 7. Reinicia os serviços necessários
-sudo systemctl restart nginx php8.2-fpm mariadb
+sudo systemctl restart nginx php8.4-fpm mariadb
 
 # 8. Download do GLPI
-wget https://github.com/glpi-project/glpi/releases/download/10.0.15/glpi-10.0.15.tgz
+wget https://github.com/glpi-project/glpi/releases/download/10.0.20/glpi-10.0.20.tgz
 
 # 9. Descompactar a pasta do GLPI
 tar -zxf glpi-*.tgz
