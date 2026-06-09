@@ -87,7 +87,7 @@ sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
 sudo systemctl restart nginx php8.4-fpm mariadb
 
 # 8. Download do GLPI
-wget https://github.com/glpi-project/glpi/releases/download/11.0.5/glpi-11.0.5.tgz
+wget https://github.com/glpi-project/glpi/releases/download/11.0.7/glpi-11.0.7.tgz
 
 # 9. Descompactar a pasta do GLPI
 tar -zxf glpi-*.tgz
