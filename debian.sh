@@ -1,7 +1,6 @@
 #!/bin/bash
-#
-# Script de instalação automatizada do GLPI 10 no Debian 13 (Trixie)
-#
+
+# Script de instalação automatizada do GLPI 10 no Debian 13 (Trixie) #
 
 echo "#########################################################"
 echo " Script para Instalacao do GLPI no Debian 13 (Trixie)"
@@ -87,7 +86,7 @@ sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
 sudo systemctl restart nginx php8.4-fpm mariadb
 
 # 8. Download do GLPI
-wget https://github.com/glpi-project/glpi/releases/download/11.0.7/glpi-11.0.7.tgz
+wget https://github.com/glpi-project/glpi/releases/download/11.0.8/glpi-11.0.8.tgz
 
 # 9. Descompactar a pasta do GLPI
 tar -zxf glpi-*.tgz
